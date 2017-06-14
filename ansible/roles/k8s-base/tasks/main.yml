@@ -78,6 +78,15 @@
   tags:
     - k8s
 
+- name: Ensure JSONPath.sh
+  become: yes
+  get_url:
+    url: https://raw.githubusercontent.com/mclarkson/JSONPath.sh/master/JSONPath.sh
+    dest: /usr/bin/JSONPath.sh
+    mode: 0755
+  tags:
+    - k8s
+
 - name: Ensure Docker Group
   group:
     name: docker
