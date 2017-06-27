@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
       else
         s.vm.provision :shell, inline: "PYTHONUNBUFFERED=1 ansible-playbook /vagrant/ansible/k8s-worker.yml -c local"
       end
-      s.vm.network "private_network", ip: "172.42.42.#{i}", netmask: "255.255.255.0",
+      s.vm.network "private_network", ip: "172.42.42.1#{i}", netmask: "255.255.255.0",
         auto_config: true
       s.vm.provider "virtualbox" do |v|
         v.name = "k8s#{i}"
