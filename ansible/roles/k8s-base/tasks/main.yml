@@ -62,20 +62,7 @@
   tags:
     - k8s
     
-- name: Install version '0.5.1' of package "kubernetes-cni"
-  apt:
-    name: kubernetes-cni=0.5.1-00
-    state: present
 
-- name: Install version '1.7.5' of package "kubelet"
-  apt:
-    name: kubelet=1.7.5-01
-    state: present
-
-- name: Install the version '1.7.5' of package "kubeadm"
-  apt:
-    name: kubeadm=1.7.5-00
-    state: present
 
 - name: Ensure Base Kubernetes
   become: yes
@@ -83,6 +70,9 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - kubelet
+    - kubeadm
+    - kubernetes-cni
     - apt-transport-https
     - docker-engine
     - kubectl
